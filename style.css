@@ -9,8 +9,8 @@
 }
 
 body {
-    --hue: var(--backgroundBeforeSel);
-    background-color: var(--hue);
+    --col: var(--backgroundBeforeSel);
+    background-color: var(--col);
     padding: 0;
     margin: 0;
     display: flex;
@@ -21,9 +21,47 @@ body {
 }
 
 body.correct {
-    --hue: var(--backgroundCorrect);
+    --col: var(--backgroundCorrect);
 }
 
 body.wrong {
-    --hue: var(--backgroundWrong);
+    --col: var(--backgroundWrong);
+}
+
+.card {
+    width: 750px;
+    max-width: 75%;
+    background-color: white;
+    border-radius: 6px;
+    padding: 8px;
+    box-shadow: 0 0 15px 2px;
+}
+
+.grid {
+    display: grid;
+    gap: 12px;
+    margin: 25px 0;
+}
+
+.btn.correct { 
+    --col: var(--backgroundCorrect);
+}
+
+.btn.wrong { 
+    --col: var(--backgroundWrong);
+}
+
+.controlbtns{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.start-btn, .next-btn {
+    display: flex;
+    font-size: 60px;
+    padding: 10px 20px;
+}
+.hide {
+    display: none;
 }
