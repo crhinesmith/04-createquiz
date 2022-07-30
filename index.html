@@ -10,6 +10,7 @@
 </head>
 
 <body>
+  <h1 class = "time"></h1>
   <div class ="card">
     <div id="question-container" class="hide">
       <div id="question">Question</div>
@@ -23,6 +24,17 @@
     <div class ="controlbtns">
       <button id="start-btn" class="start-btn btn">Start</button>
       <button id="next-btn" class="next-btn btn hide">Next</button>
+    </div>
+  </div>
+  <div class ="highscore hide">
+    <h1>Highscores</h1>
+    <form name="highscoreList" class="m-4">
+      <input type="text" name="initials"/>
+    </form>
+    <ol></ol>
+    <div class = "scoresheet-btns">
+      <button id = "goBack-btn" class = "goBack-btn btn">Go Back</button>
+      <button id = "clearScore-btn" class = "clearScore-btn btn">Clear Score</button>
     </div>
   </div>
 </body>

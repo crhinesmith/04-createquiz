@@ -1,21 +1,44 @@
-var startButton = document.getElementById('start-btn')
-var questionContainer= document.getElementById('question-container')
-var questionEl = document.getElementById('question')
-var answersEl = document.getElementById('answers')
-var currentQuestion = 0
+var startButton = document.getElementById('start-btn');
+var nextButton = document.getElementById('next-btn');
+var questionContainer= document.getElementById('question-container');
+var questionEl = document.getElementById('question');
+var answersEl = document.getElementById('answers');
+var currentQuestion = 0;
+var score = 0 ;
+var timeEl = document.querySelector('.time');
+var secondsLeft = 90;
+var finalScore;
+var highScore = document.querySelector('.highscore');
+var backButton = document.getElementById('goBack-btn');
 
 
 startButton.addEventListener('click', start)
+
+function setTime(){
+    var timerInterval = setInterval(function() {
+        secondsLeft--;
+        timeEl.textContent = "Time Left: " + secondsLeft + " s ";
+
+        if(secondsLeft <= 0) {
+            clearInterval(timerInterval);
+            endGame();
+        }
+
+    }, 1000);
+}
+
 
 
 function start() {
     startButton.classList.add('hide')
     questionContainer.classList.remove('hide')
+    setTime()
     nextQuestion(currentQuestion)
 }
 
 function nextQuestion(index) {
     showQuestion(questions[index])
+
   
 }
 
@@ -26,12 +49,44 @@ function showQuestion(questionObject){
         var answer = answersEl.children[i]
         var answerObject = questionObject.answers[i]
         answer.innerText = answerObject.text
-      }
-}
-function answerSelect() {
-    currentQuestion++
+        answer.setAttribute("data-value", answerObject.correct)
+        answer.addEventListener('click', answerSelect)
+    }
+    }
+
+function answerSelect(e) {
+    var selectedButton = e.target
+    var correct = selectedButton.dataset.value
+    console.log(typeof(correct))
+    if (correct === "true"){
+        selectedButton.classList.add("btn.correct")
+        currentQuestion++
+        nextQuestion(currentQuestion)
+        score = score + 10
+    }  
+    if (correct === "false") {
+        selectedButton.classList.add("btn.wrong")
+        secondsLeft = secondsLeft - 10
+        showTime()
+    }
+    if (currentQuestion === questions.length){
+        endGame()
+    }
+
 }
 
+function endGame(){
+    questionContainer.classList.add('hide')
+    highScore.classList.remove('hide')
+    timeEl.classList.add('hide')
+}
+
+
+function inputInitials(){
+}
+backButton.addEventListener('click', function(e){
+    location.reload();
+}, false);
 var questions = [
     {
         question: 'The condition in an if else statement is enclosed by',
