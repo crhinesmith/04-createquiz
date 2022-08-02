@@ -21,20 +21,24 @@
         <button class="btn">Answer 4</button>
       </div>
     </div>
+    <div id="responses">
+        <button id="btn-correct" class="hide">Correct</button>
+        <button id="btn-correct" class="hide">Wrong</button>
+    </div>
     <div class ="controlbtns">
       <button id="start-btn" class="start-btn btn">Start</button>
-      <button id="next-btn" class="next-btn btn hide">Next</button>
     </div>
   </div>
   <div class ="highscore hide">
-    <h1>Highscores</h1>
+    <h1>Highscores (only top 5 scores will display)</h1>
     <form name="highscoreList" class="m-4">
-      <input type="text" name="initials"/>
+      <input type="text" name="initials" id= 'initials'/>
     </form>
-    <ol></ol>
+    <ol id="highScoresList"></ol>
     <div class = "scoresheet-btns">
+      <button id = "submit-btn" class = "submit-btn btn">Submit Initials</button>
       <button id = "goBack-btn" class = "goBack-btn btn">Go Back</button>
-      <button id = "clearScore-btn" class = "clearScore-btn btn">Clear Score</button>
+      <button id = "clearScore-btn" class = "clearScore-btn btn">Clear Scores</button>
     </div>
   </div>
 </body>
